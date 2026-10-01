@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Comments } from "@/components/Comments";
 import { Mdx } from "@/lib/mdx";
+import { site } from "@/lib/site";
 import { getPost, getPosts, getPostsForProject, getProject } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -38,7 +39,7 @@ export default async function PostPage({ params }: PageProps<"/log/[slug]">) {
         <p className="mt-4 text-xl text-muted">{post.summary}</p>
         <div className="mt-6 mb-2 flex flex-wrap gap-4 border-t-2 border-b border-t-ink border-b-line py-3 font-mono text-xs">
           <span>{post.date}</span>
-          <span className="uppercase">{project.type}</span>
+          <span>{site.projectTypes[project.type]}</span>
           <span>~{post.readingMinutes} min</span>
           {project.repo && <a href={project.repo} className="text-accent">github ↗</a>}
         </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Mdx } from "@/lib/mdx";
 import { getNow } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Now", description: "What I'm reading and building this week." };
+export const metadata: Metadata = { title: "Now", description: "What I'm messing with this week." };
 
 export default function NowPage() {
   const now = getNow();

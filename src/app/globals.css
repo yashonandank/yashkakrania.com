@@ -118,6 +118,18 @@ body {
 .figure { margin: 28px 0; background: var(--surface); border: 1px solid var(--line); padding: 16px; }
 .figure figcaption { font: 500 12px var(--font-mono); color: var(--muted); margin-top: 10px; }
 
+/* Comic panel (About → Off the clock): thick border, halftone dots, tilted caption box. */
+.panel {
+  position: relative; padding: 20px; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--accent);
+  background: radial-gradient(circle, rgba(var(--pt2), 0.18) 1.2px, transparent 1.7px) 0 0 / 9px 9px, var(--surface);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s;
+}
+.panel:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--accent); }
+.panel-caption {
+  display: inline-block; transform: rotate(-1.5deg); padding: 4px 10px; background: var(--accent); color: var(--accent-ink);
+  font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; border: 2px solid var(--ink);
+}
+
 /* ---------- long-form post typography ---------- */
 .prose { max-width: 720px; counter-reset: sec; }
 .prose h2 { font-size: 30px; line-height: 1.1; font-weight: 800; letter-spacing: -0.03em; margin: 52px 0 12px; counter-increment: sec; }

@@ -12,7 +12,7 @@ export default function LogPage() {
     <div className="wrap py-16">
       <div className="kicker">{posts.length} entries · <a href="/rss.xml" className="underline">rss</a></div>
       <h1 className="h-display mt-2 text-[clamp(56px,12vw,140px)]">Log</h1>
-      <p className="mt-4 max-w-xl text-muted">Lab notebook entries: what I read, what I built, what broke, what&apos;s next.</p>
+      <p className="mt-4 max-w-xl text-muted">Weekly notes: what I read, what I tried, what broke, and what I&apos;ll try next. Newest first.</p>
       {Object.entries(byYear).map(([year, list]) => (
         <section key={year} className="mt-12">
           <h2 className="font-mono text-sm text-muted">{year}</h2>

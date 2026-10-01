@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion";
 import { getProjects } from "@/lib/content";
 import { ProjectFilter } from "./ProjectFilter";
 
-export const metadata: Metadata = { title: "Projects", description: "Every weekly experiment, build and wildcard." };
+export const metadata: Metadata = { title: "Projects", description: "Everything I've poked at, built, or wandered into." };
 
 export default function ProjectsPage() {
   const projects = getProjects();
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <div className="wrap py-16">
       <div className="kicker">{projects.length} projects</div>
       <h1 className="h-display mt-2 text-[clamp(56px,12vw,140px)]">Projects</h1>
-      <p className="mt-4 max-w-xl text-muted">Each project is one question or build. Some take a week, some turn into a series of posts.</p>
+      <p className="mt-4 max-w-xl text-muted">Each one started as a question I couldn&apos;t answer. Some take a week; some quietly take over my life for a month.</p>
       {/* Filtering needs clicks → a client component. The cards are passed in already rendered. */}
       <ProjectFilter
         items={projects.map((p, i) => ({

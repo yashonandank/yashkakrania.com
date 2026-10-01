@@ -5,7 +5,8 @@ export default function NotFound() {
     <div className="wrap py-32">
       <div className="kicker">404 · activation not found</div>
       <h1 className="h-display mt-2 text-[clamp(56px,12vw,140px)]">Off the manifold.</h1>
-      <Link href="/" className="btn mt-8">Back home →</Link>
+      <p className="mt-6 max-w-xl text-xl text-muted">This page doesn&apos;t exist. Could be a typo, could be me. It&apos;s usually me.</p>
+      <Link href="/" className="btn mt-8">Take me home →</Link>
     </div>
   );
 }

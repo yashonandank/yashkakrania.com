@@ -1,6 +1,6 @@
 # yash-site
 
-Personal AI lab notebook: one thing in AI each week, learned and built in public.
+Yash's AI playground: poking at AI until it makes sense (or breaks), and writing down what happened.
 Next.js (App Router, fully static), MDX content, Tailwind v4, Motion.
 
 ## Run it
@@ -16,7 +16,7 @@ npm run build    # production build; fails loudly on bad frontmatter
 | What | Where |
 | --- | --- |
 | Site name, links, newsletter, comments config | `src/lib/site.ts` |
-| About page intro, timeline, interests | `src/data/about.ts` |
+| About page intro, timeline, hobbies, Superman panels | `src/data/about.ts` (panel images go in `public/comics/`) |
 | Projects (one file each) | `content/projects/<slug>.mdx` |
 | Weekly posts (folder each, images alongside) | `content/posts/<slug>/index.mdx` |
 | "Now" box on home + /now | `content/now.md` |
@@ -33,6 +33,6 @@ Library, RSS (`/rss.xml`), sitemap and social preview images are generated from 
 
 ## One-time setup before launch
 
-- **Links + newsletter**: fill the `TODO`s in `src/lib/site.ts` (email, LinkedIn, X, Discord, Buttondown username).
+- **Newsletter / Discord**: set `buttondownUser` and `links.discord` in `src/lib/site.ts`. While empty, the site shows an RSS link and "Discord: coming soon" instead.
 - **Comments (giscus)**: public repo → Settings → enable Discussions → install https://github.com/apps/giscus → pick the repo and a category at https://giscus.app → copy `repoId` / `categoryId` into `site.giscus`.
 - **Deploy (Vercel)**: push to GitHub, import the repo at vercel.com/new, production URLs default to https://yashkakrania.com (override with `NEXT_PUBLIC_SITE_URL`).

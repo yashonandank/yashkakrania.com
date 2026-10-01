@@ -8,6 +8,7 @@ import { ViewTransition } from "react";
 import { PostRow } from "@/components/cards";
 import { Mdx } from "@/lib/mdx";
 import { getProject, getProjects, getPostsForProject } from "@/lib/content";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
@@ -28,7 +29,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
     <div className="wrap py-16">
       <div className="font-mono text-xs text-muted">projects / {project.slug}</div>
       <div className="mt-4 flex flex-wrap gap-2">
-        <span className="tag text-accent">{project.type}</span>
+        <span className="tag text-accent">{site.projectTypes[project.type]}</span>
         <span className="tag">week {project.week}</span>
         <span className="tag">{project.status}</span>
       </div>
@@ -38,15 +39,15 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <p className="mt-5 max-w-2xl text-xl text-muted">{project.summary}</p>
 
       <div className="mt-8 grid gap-4 border-y-2 border-ink py-5 md:grid-cols-[1fr_auto]">
-        <p><span className="kicker mr-2">Key finding</span>{project.keyFinding}</p>
+        <p><span className="kicker mr-2">So far</span>{project.keyFinding}</p>
         {project.repo && <a href={project.repo} className="btn self-start">GitHub repo ↗</a>}
       </div>
 
       <div className="prose mt-8"><Mdx source={project.body} /></div>
 
-      <h2 className="h-display mt-16 text-4xl">Posts in this project</h2>
+      <h2 className="h-display mt-16 text-4xl">Notes on this one</h2>
       <div className="mt-2">
-        {posts.length ? posts.map((p) => <PostRow key={p.slug} post={p} />) : <p className="mt-4 text-muted">First post coming soon.</p>}
+        {posts.length ? posts.map((p) => <PostRow key={p.slug} post={p} />) : <p className="mt-4 text-muted">First post coming soon. Probably.</p>}
       </div>
     </div>
   );

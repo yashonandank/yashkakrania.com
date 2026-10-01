@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion";
 import { getLibrary } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Library", description: "Every source I've used, grouped by topic." };
+export const metadata: Metadata = { title: "Library", description: "Everything I've read (or at least opened in a tab), grouped by topic." };
 
 export default function LibraryPage() {
   const groups = getLibrary();
@@ -13,7 +13,7 @@ export default function LibraryPage() {
     <div className="wrap py-16">
       <div className="kicker">{total} sources · {topics.length} topics</div>
       <h1 className="h-display mt-2 text-[clamp(56px,12vw,140px)]">Library</h1>
-      <p className="mt-4 max-w-xl text-muted">Built automatically from the sources listed in each post.</p>
+      <p className="mt-4 max-w-xl text-muted">Everything I&apos;ve read (or at least opened in a tab), pulled automatically from each post, because I would never keep a reading list up to date by hand.</p>
       <div className="mt-12 grid gap-10 md:grid-cols-2">
         {topics.map((topic, i) => (
           <Reveal key={topic} delay={(i % 2) * 0.08}>
