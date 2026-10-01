@@ -1,0 +1,15 @@
+---
+title: Finding persuasion in activation space
+type: experiment
+status: active
+week: 1
+summary: Is there a direction inside an open model that tracks how persuasive a piece of text is, and can I steer with it? Using real r/ChangeMyView replies.
+keyFinding: "Placeholder: fill in once week 1 results are in."
+repo: https://github.com/yashonandank
+tags: [interpretability, probing, steering, reddit]
+featured: true
+---
+
+r/ChangeMyView is a rare natural dataset for persuasion: when a reply changes the original poster's mind, they award it a **Δ (delta)**. That gives labelled examples of text that *worked* versus text that didn't, on the same topic.
+
+The plan: extract residual-stream activations for delta and non-delta replies, train linear probes layer by layer, then use the difference of means as a steering vector and see what happens to generations.

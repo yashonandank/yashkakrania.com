@@ -1,0 +1,71 @@
+---
+title: Is there a "persuasion" direction inside the model?
+date: 2026-10-05
+week: 1
+project: persuasion-directions
+summary: Probing and steering an open model on real r/ChangeMyView replies. Lab notes, not a tutorial.
+tags: [interpretability, probing]
+draft: false
+sources:
+  - title: "Representation Engineering: A Top-Down Approach to AI Transparency"
+    url: https://arxiv.org/abs/2310.01405
+    type: paper
+    topic: Steering & representation engineering
+    note: "Placeholder note: my one-line takeaway."
+  - title: "Steering Language Models With Activation Engineering"
+    url: https://arxiv.org/abs/2308.10248
+    type: paper
+    topic: Steering & representation engineering
+  - title: "Winning Arguments: Interaction Dynamics and Persuasion Strategies in Good-faith Online Discussions"
+    url: https://arxiv.org/abs/1602.01103
+    type: paper
+    topic: Persuasion & CMV data
+---
+
+> Sample post with placeholder content. Replace with your real notes. It's here to show every building block a post can use.
+
+## The question
+
+Replies that earn a Δ on CMV changed someone's mind. If persuasiveness is *linearly represented*, a simple probe on the residual stream should separate Δ from non-Δ replies, and adding that direction back should make generations more persuasive.
+
+## What I read
+
+The three sources in the frontmatter show up at the bottom of this post **and** on the Library page automatically.
+
+## Key ideas, in my words
+
+A steering vector is the difference between mean activations of the two groups at layer $\ell$:
+
+$$
+v_\ell = \mu_\ell(\Delta) - \mu_\ell(\neg\Delta), \qquad h' = h + \alpha \, v_\ell
+$$
+
+## What I built
+
+```python
+# grab residual-stream activations for each reply
+for reply in replies:
+    _, cache = model.run_with_cache(reply.text)
+    X.append(cache[f"blocks.{layer}.hook_resid_post"].mean(1))
+    y.append(reply.got_delta)
+```
+
+## What I found
+
+<Figure caption="Fig 1. Probe accuracy by layer (illustrative placeholder values). Hover a bar.">
+  <BarChart data={[0.51,0.52,0.53,0.55,0.57,0.6,0.62,0.65,0.68,0.7,0.72,0.74,0.76,0.77,0.75,0.73,0.71,0.69,0.66,0.64,0.62,0.6,0.58,0.56]} label="probe accuracy by layer" xLabels={["layer 0", "layer 23"]} />
+</Figure>
+
+<Figure caption="Fig 2. Hover or tap a word to see attention arcs (illustrative weights).">
+  <AttentionArcs text="I see your point, but the evidence you cite supports the opposite conclusion" />
+</Figure>
+
+<GradioDemo src="https://TODO.hf.space" title="Steer α and generate" />
+
+## What broke
+
+<Callout kind="broke">Δ replies are longer on average. Is the probe just detecting length? Need a length-matched control.</Callout>
+
+## What's next
+
+Length-matched dataset, sweep more layers, and test whether steered generations actually read as more persuasive to humans.
