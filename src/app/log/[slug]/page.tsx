@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Comments } from "@/components/Comments";
 import { Mdx } from "@/lib/mdx";
 import { getPost, getPosts, getPostsForProject, getProject } from "@/lib/content";
 
@@ -63,7 +64,7 @@ export default async function PostPage({ params }: PageProps<"/log/[slug]">) {
         {next && <Link href={`/log/${next.slug}`} className="navlink sm:text-right"><span className="kicker block">next in series →</span>{next.title}</Link>}
       </nav>
 
-      {/* giscus comments go here in the next step */}
+      <Comments term={post.slug} />
     </article>
   );
 }

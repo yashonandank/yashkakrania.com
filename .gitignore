@@ -40,3 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/log-assets
+.ruff_cache

@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# yash-site
 
-## Getting Started
+Personal AI lab notebook: one thing in AI each week, learned and built in public.
+Next.js (App Router, fully static), MDX content, Tailwind v4, Motion.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build; fails loudly on bad frontmatter
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+| --- | --- |
+| Site name, links, newsletter, comments config | `src/lib/site.ts` |
+| About page intro, timeline, interests | `src/data/about.ts` |
+| Projects (one file each) | `content/projects/<slug>.mdx` |
+| Weekly posts (folder each, images alongside) | `content/posts/<slug>/index.mdx` |
+| "Now" box on home + /now | `content/now.md` |
+| Colours, fonts, shared component styles | `src/app/globals.css` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Library, RSS (`/rss.xml`), sitemap and social preview images are generated from the content. Nothing to maintain by hand.
 
-## Learn More
+## Weekly routine
 
-To learn more about Next.js, take a look at the following resources:
+1. Update `content/now.md`.
+2. Add a post: `content/posts/w02-something/index.mdx` (copy the frontmatter from week 1). `project` must match a file in `content/projects/`. Keep `draft: true` until it's ready; drafts show in dev but not in production.
+3. Or start from a notebook: `python scripts/nb2mdx.py nb.ipynb --slug w02-something --project <project> --week 2` (needs `pip install nbconvert`).
+4. Inside posts you can use `<Callout>`, `<Figure>`, `<BarChart>`, `<AttentionArcs>`, `<GradioDemo>` (see `src/components/mdx-components.tsx`), `$math$`, and fenced code.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## One-time setup before launch
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Links + newsletter**: fill the `TODO`s in `src/lib/site.ts` (email, LinkedIn, X, Discord, Buttondown username).
+- **Comments (giscus)**: public repo → Settings → enable Discussions → install https://github.com/apps/giscus → pick the repo and a category at https://giscus.app → copy `repoId` / `categoryId` into `site.giscus`.
+- **Deploy (Vercel)**: push to GitHub, import the repo at vercel.com/new, production URLs default to https://yashkakrania.com (override with `NEXT_PUBLIC_SITE_URL`).

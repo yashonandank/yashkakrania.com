@@ -4,7 +4,7 @@ export const site = {
   title: "Yash — AI lab notebook",
   description:
     "I pick one thing in AI each week, learn what it takes, and build it in public. Lab notes on interpretability experiments and applied AI builds.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000", // set to your domain on Vercel
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === "production" ? "https://yashkakrania.com" : "http://localhost:3000"),
   location: "Atlanta",
   links: {
     github: "https://github.com/yashonandank",
@@ -15,6 +15,13 @@ export const site = {
     discussions: "https://github.com/yashonandank/TODO/discussions",
   },
   buttondownUser: "TODO", // your Buttondown username
+  // Post comments via GitHub Discussions. Get these values from https://giscus.app (see Comments.tsx).
+  giscus: {
+    repo: "yashonandank/yashkakrania.com", // "owner/repo", must be public with Discussions enabled
+    repoId: "TODO",
+    category: "Comments",
+    categoryId: "TODO",
+  },
   nav: [
     { href: "/about", label: "about" },
     { href: "/projects", label: "projects" },
