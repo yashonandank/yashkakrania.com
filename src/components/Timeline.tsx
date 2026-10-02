@@ -1,7 +1,7 @@
 "use client";
 /**
  * Interactive timeline for the About page:
- *  - filter chips by kind (work / founded / built / education)
+ *  - filter chips by kind (work / built / led / school)
  *  - a progress line that fills as you scroll (Motion's useScroll)
  *  - each entry expands on click to show its blurb
  */
@@ -9,7 +9,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useReducedMotion } from "motion/react";
 import type { Entry } from "@/data/about";
 
-const KINDS = ["all", "work", "founded", "built", "education"] as const;
+const KINDS = ["all", "work", "built", "led", "school"] as const;
 
 export function Timeline({ entries }: { entries: Entry[] }) {
   const [kind, setKind] = useState<(typeof KINDS)[number]>("all");

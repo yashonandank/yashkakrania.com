@@ -1,24 +1,87 @@
-// About-page data. Timeline entries are DRAFT placeholders: replace with your real details (dates, outcomes).
-// Keeping it as data (not hard-coded JSX) means the timeline component just renders whatever is here.
+// About-page data. Keeping it as data (not hard-coded JSX) means the page just renders whatever is here.
 export type Entry = {
   period: string;
   title: string;
   org: string;
-  kind: "work" | "education" | "founded" | "built";
+  kind: "work" | "built" | "led" | "school";
   blurb: string;
   link?: string;
 };
 
 export const intro =
-  "Business-school grad who got hooked on AI and never recovered. No CS degree, so I learn the only way I know how: build the thing, break the thing, write down why it broke. This site is where the wreckage goes.";
+  "By day I'm a technology risk analyst at EY in Atlanta, which means my job is asking \"what could go wrong?\" By night I flip it around: \"what happens if I poke this AI model?\" Business-school grad, no CS degree, learning mostly by breaking things.";
 
 export const timeline: Entry[] = [
-  { period: "2026 –", title: "Technology Risk", org: "Big 4 firm", kind: "work", blurb: "TODO: one line on what you do and one thing you're pushing (AI in pre-implementation assessments?)." },
-  { period: "TODO", title: "Founder", org: "GAIA", kind: "founded", blurb: "Grew it from zero to 100+ members, with a formal 8-week AI accelerator. TODO: outcome." },
-  { period: "TODO", title: "CaseSim", org: "Side project", kind: "built", blurb: "Professor-facing case simulation platform. TODO: one-line outcome." },
-  { period: "TODO", title: "Goizueta Learning Platform", org: "Emory", kind: "built", blurb: "Rebuilt learning platform (React + FastAPI). TODO: outcome." },
-  { period: "TODO", title: "wAIve", org: "Side project", kind: "built", blurb: "Personalized weekly news digest with Socratic AI conversations." },
-  { period: "TODO", title: "BBA: Marketing, Information Systems, AI, Entrepreneurship", org: "Emory University, Goizueta", kind: "education", blurb: "Poets & Quants Top 100 undergraduate business student." },
+  {
+    period: "2026 – now",
+    title: "Technology Risk Analyst",
+    org: "EY · Atlanta",
+    kind: "work",
+    blurb: "Professional worrier. I look at how big companies run their IT systems and figure out what could go sideways before it does. Turns out \"what could go wrong?\" is a full-time job.",
+  },
+  {
+    period: "2026 – now",
+    title: "Board Member",
+    org: "B Local Georgia",
+    kind: "led",
+    blurb: "Helping grow Georgia's community of businesses trying to do right by people and the planet. Easily the most grown-up thing on this list.",
+  },
+  {
+    period: "2024 – 2026",
+    title: "Research Assistant, Goizueta AI Lab",
+    org: "Emory University",
+    kind: "built",
+    blurb: "Built four GenAI apps for business classes, including a virtual TA and an autograder (students had opinions about the autograder). Also made AI Case Coach with Whisper, React and Supabase; 80+ people used it in its first week, which I'm still a little smug about.",
+  },
+  {
+    period: "2025 – 2026",
+    title: "Founder & President",
+    org: "Goizueta AI Association",
+    kind: "led",
+    blurb: "Started an AI club and it got out of hand in the best way: 100+ members, 14 sessions on prompting and AI research, and an 8-week accelerator that took 60+ students from napkin idea to pitch. Also helped the school launch a new AI in Business major.",
+  },
+  {
+    period: "2024 – 2026",
+    title: "Captain, Case Competition Team",
+    org: "Goizueta Business School",
+    kind: "led",
+    blurb: "Took the team to the world's biggest case competition, in New Zealand, and came 3rd in the world (1st from the U.S.). Four cases, very little sleep, zero regrets.",
+  },
+  {
+    period: "2025 – 2026",
+    title: "Chief Research Officer",
+    org: "Emory Impact Investing Group",
+    kind: "led",
+    blurb: "Taught 111 students how to actually do research, ran the club's biggest symposium yet (160+ people), and set up teams to help vet deals for a $360k impact fund.",
+  },
+  {
+    period: "Summer 2025",
+    title: "Technology Risk Intern",
+    org: "EY · Atlanta",
+    kind: "work",
+    blurb: "Dug into the IT systems of two NYSE-listed companies and drew more flowcharts than I thought humanly possible. Liked it enough to come back full-time.",
+  },
+  {
+    period: "Summer 2024",
+    title: "GenAI Data Science Intern",
+    org: "EY · Kolkata",
+    kind: "built",
+    blurb: "Team of four, one chatbot: an inventory planner for a retailer with 6,000+ products. I simulated a lot of stores running out of a lot of things, then wrapped it in a Streamlit app so nobody needed training to use it.",
+  },
+  {
+    period: "Summer 2023",
+    title: "Go-to-Market Intern",
+    org: "Cut n' Stitch Kidswear",
+    kind: "work",
+    blurb: "A company that makes Marvel merch (yes, superheroes again). Set up an AI-powered CRM, built a portfolio site that helped bump sales 11%, and pitched bulk buyers at trade shows across India.",
+  },
+  {
+    period: "Class of 2026",
+    title: "BBA, Goizueta Business School",
+    org: "Emory University",
+    kind: "school",
+    blurb: "Majored in Marketing, Management, Information Systems and Entrepreneurship, because picking one felt like commitment. Somehow ended up on Poets & Quants' 100 Best & Brightest list and with the Boisfeuillet Jones Medal for Leadership. TA'd five classes, including one on AWS.",
+  },
 ];
 
 export const interests = ["Interpretability", "Agents", "Comics", "Coffee", "Video games", "VR"];
