@@ -26,14 +26,14 @@ export const timeline: Entry[] = [
     title: "Technology Risk Analyst",
     org: "EY · Atlanta",
     kind: "work",
-    blurb: "Professional worrier. I look at how big companies run their IT systems and figure out what could go sideways before it does. Turns out \"what could go wrong?\" is a full-time job, and a surprisingly useful lens for AI too.",
+    blurb: "Full-time on EY's Technology Risk team in Atlanta after interning with the same group. I assess clients' IT systems and controls, identify where processes are exposed to risk, and recommend improvements. The work has given me a practical lens on technology governance that I now apply to how AI systems are built and deployed.",
   },
   {
     period: "2024 – 2026",
     title: "Research Assistant, Goizueta AI Lab",
     org: "Emory University",
     kind: "work",
-    blurb: "Built four GenAI apps for five business classes, including a virtual TA and an autograder (students had opinions about the autograder). Also made AI Case Coach with Whisper, React and Supabase; 80+ people used it in its first week, which I'm still a little smug about. And I designed a survey 1,200+ alumni and faculty took to shape a new tech-focused business degree.",
+    blurb: "Developed four GenAI applications, including a virtual TA and an autograder, to personalize student learning across five business classes. Designed a survey taken by 1,200+ alumni and faculty that informed the curriculum for a new undergraduate business degree in technology. Also built AI Case Coach using the Whisper API, React and Supabase, which reached 80+ users within its first week of launch.",
   },
   // ---------- past projects ----------
   {
@@ -41,14 +41,14 @@ export const timeline: Entry[] = [
     title: "Goizueta Learning Platform",
     org: "AI-native learning management system",
     kind: "projects",
-    blurb: "A learning platform built around AI from day one instead of bolted on later. The idea: every student gets a version of the class that adapts to them, with tools like a practice-quiz study buddy that figures out what you don't know yet and quizzes you on exactly that (rude, but effective).",
+    blurb: "An AI-native learning management system designed to enhance personalized learning. Instead of adding AI on top of an existing LMS, the platform is built around it, with applications such as a practice-quiz study buddy that adapts questions to each student's gaps and helps them review course material at their own pace.",
   },
   {
     period: "2025 – 2026",
     title: "CaseSim",
     org: "AI agent case interview platform",
     kind: "projects",
-    blurb: "Case interviews are terrifying, and practice partners are never free at 11pm. CaseSim is an AI agent that runs a full case interview with you: it gives you the prompt, pushes back on your math and asks the annoying follow-ups. It got rolled out through the BBA Career Management Center, so real students now use it to prep.",
+    blurb: "An AI agent platform for practicing case interviews. The agent runs a full case end to end: it presents the prompt, responds to the candidate's structure and analysis, and asks follow-up questions the way an interviewer would. CaseSim was rolled out through the BBA Career Management Center so students can prepare for consulting recruiting on demand.",
   },
   // ---------- education ----------
   {
@@ -56,21 +56,21 @@ export const timeline: Entry[] = [
     title: "BBA, Goizueta Business School",
     org: "Emory University",
     kind: "school",
-    blurb: "Concentrated in Marketing, Management, Information Systems and Entrepreneurship, because picking one felt like commitment. The classes I nerded out on most were Machine Learning, Customer Lifetime Value and Monetization (basically: how do you predict what people will do, and what's it worth?), plus Strategy and Corporate Finance to keep me honest. TA'd five classes along the way, from Intro to Accounting to AWS. Somehow ended up on Poets & Quants' 100 Best & Brightest list and with the Boisfeuillet Jones Medal for Leadership.",
+    blurb: "Bachelor of Business Administration with concentrations in Marketing, Management, Information Systems and Entrepreneurship. Coursework I found most interesting included Machine Learning, Customer Lifetime Value and Monetization, alongside Strategy Management and Corporate Finance. Served as a TA for Marketing Consulting Practicum, Intro to Accounting, Accounting Analytics, Data Management and AWS. Named to Poets & Quants' 100 Best & Brightest Business Majors of 2026 and received the Boisfeuillet Jones Medal for Leadership.",
   },
   {
     period: "2024 – 2026",
     title: "Captain, Case Competition Team",
     org: "Goizueta Business School",
     kind: "school",
-    blurb: "Case comps are where I learned to think fast and make slides faster. Highlights: 3rd in the world (1st from the U.S.) at the world's biggest competition, in New Zealand; 1st place using AI to fix market research data for The Link Group; and semi-finals out of 300+ teams using ML to rethink credit lending for Capital One. Very little sleep, zero regrets.",
+    blurb: "Led Goizueta's case competition team as Captain (President). At the world's largest case competition in New Zealand, the team placed 3rd in the world and 1st among U.S. schools after solving four cases. Won 1st place by using AI tools to improve data collection for The Link Group's marketing research, and placed as semi-finalists among 300+ teams by applying AI and ML to enable riskier credit lending for Capital One customers.",
   },
   {
     period: "2025 – 2026",
     title: "Founder & President, Goizueta AI Association",
     org: "Emory University",
     kind: "school",
-    blurb: "Started an AI club and it got out of hand in the best way: 100+ members, 14 sessions on prompting and AI research, and an 8-week accelerator that took 60+ students from napkin idea to pitch. Also helped the school launch a brand-new AI in Business major, which is a fun thing to have a hand in.",
+    blurb: "Founded Goizueta's AI association and grew it to 100+ BBA and MBA members. Organized and presented 14 educational sessions on prompt engineering and AI research. Designed and launched the school's flagship AI-powered 8-week accelerator, supporting 60+ students through ideation, concept validation, MVP engineering and pitch development. Also consulted the BBA Office on building AI capabilities for the school, which led to a new AI in Business major.",
   },
 ];
 
