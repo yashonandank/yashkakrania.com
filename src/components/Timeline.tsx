@@ -1,31 +1,29 @@
 "use client";
 /**
  * Interactive timeline for the About page:
- *  - filter chips by kind (work / built / led / school)
+ *  - filter chips by kind (work / past projects / education), first one selected by default
  *  - a progress line that fills as you scroll (Motion's useScroll)
  *  - each entry expands on click to show its blurb
  */
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useReducedMotion } from "motion/react";
-import type { Entry } from "@/data/about";
-
-const KINDS = ["all", "work", "built", "led", "school"] as const;
+import { kinds, type Entry, type Kind } from "@/data/about";
 
 export function Timeline({ entries }: { entries: Entry[] }) {
-  const [kind, setKind] = useState<(typeof KINDS)[number]>("all");
+  const [kind, setKind] = useState<Kind>(kinds[0].kind);
   const [open, setOpen] = useState<number | null>(0);
   const ref = useRef<HTMLOListElement>(null);
   const reduce = useReducedMotion();
   // scrollYProgress goes 0 → 1 as the list scrolls through the viewport.
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 50%"] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  const shown = entries.map((e, i) => ({ e, i })).filter(({ e }) => kind === "all" || e.kind === kind);
+  const shown = entries.map((e, i) => ({ e, i })).filter(({ e }) => e.kind === kind);
 
   return (
     <div>
       <div className="mb-8 flex flex-wrap gap-2">
-        {KINDS.map((k) => (
-          <button key={k} onClick={() => setKind(k)} className={`chip ${kind === k ? "!bg-accent !text-accent-ink" : ""}`}>{k}</button>
+        {kinds.map(({ kind: k, label }) => (
+          <button key={k} onClick={() => { setKind(k); setOpen(entries.findIndex((e) => e.kind === k)); }} className={`chip ${kind === k ? "!bg-accent !text-accent-ink" : ""}`}>{label}</button>
         ))}
       </div>
       <ol ref={ref} className="relative pl-8">
@@ -36,7 +34,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
             <motion.li key={i} layout initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="relative border-b border-line">
               <span className={`absolute top-7 -left-[31px] h-4 w-4 rounded-full border-2 border-accent ${open === i ? "bg-accent" : "bg-bg"}`} />
               <button onClick={() => setOpen(open === i ? null : i)} className="group w-full py-5 text-left" aria-expanded={open === i}>
-                <span className="font-mono text-xs text-muted">{e.period} · <span className="text-accent uppercase">{e.kind}</span></span>
+                <span className="font-mono text-xs text-muted">{e.period} · <span className="text-accent uppercase">{kinds.find((k) => k.kind === e.kind)?.label}</span></span>
                 <span className="mt-1 block text-2xl font-bold tracking-tight transition-transform group-hover:translate-x-1 md:text-3xl">{e.title}</span>
                 <span className="block text-muted">{e.org}</span>
               </button>

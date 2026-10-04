@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal, RiseText } from "@/components/motion";
 import { Timeline } from "@/components/Timeline";
-import { hobbies, interests, intro, panels, superman, timeline } from "@/data/about";
+import { interests, intro, panels, superman, timeline } from "@/data/about";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "About", description: intro };
@@ -19,14 +19,8 @@ export default function AboutPage() {
           <p className="mb-6 text-muted">The short version. Click one for the story.</p>
           <Timeline entries={timeline} />
         </section>
-        <aside className="space-y-10">
+        <aside>
           <Reveal>
-            <h2 className="kicker mb-3">Into</h2>
-            <div className="flex flex-wrap gap-2">
-              {interests.map((t) => <span key={t} className="tag !text-sm transition-colors hover:bg-accent hover:text-accent-ink">{t}</span>)}
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
             <h2 className="kicker mb-3">Find me</h2>
             <ul className="space-y-1 font-mono text-sm">
               {site.contact.map((c) => <li key={c.href}><a className="navlink" href={c.href}>{c.label}</a></li>)}
@@ -35,13 +29,14 @@ export default function AboutPage() {
         </aside>
       </div>
 
-      {/* Hobbies: linked from the home page as /about#off-the-clock */}
+      {/* Interests: linked from the home page as /about#off-the-clock */}
       <section id="off-the-clock" className="mt-28 scroll-mt-20">
         <div className="kicker">Off the clock</div>
-        <h2 className="h-display mt-2 text-[clamp(40px,8vw,96px)]">When I&apos;m not breaking models.</h2>
+        <h2 className="h-display mt-2 text-[clamp(40px,8vw,96px)]">Interests outside of AI.</h2>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+        <div id="comics" className="mt-12 grid scroll-mt-20 gap-10 lg:grid-cols-[1fr_1.1fr]">
           <Reveal>
+            <div className="kicker mb-2">Comics</div>
             <h3 className="text-3xl font-extrabold tracking-tight">🦸 {superman.title}</h3>
             {superman.body.map((para, i) => <p key={i} className={`mt-4 text-lg ${i === superman.body.length - 1 ? "text-muted" : ""}`}>{para}</p>)}
           </Reveal>
@@ -64,17 +59,31 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-2">
-          {hobbies.map((h, i) => (
-            <Reveal key={h.title} delay={i * 0.08}>
-              <div className="figure !m-0 h-full">
-                <div className="text-4xl">{h.icon}</div>
-                <h3 className="mt-3 text-2xl font-extrabold tracking-tight">{h.title}</h3>
-                <p className="mt-2">{h.body}</p>
-              </div>
+        {interests.map((it) => (
+          <div key={it.id} id={it.id} className="mt-24 grid scroll-mt-20 gap-10 border-t border-line pt-12 lg:grid-cols-[1fr_1.1fr]">
+            <Reveal>
+              <div className="kicker mb-2">{it.title}</div>
+              <h3 className="text-3xl font-extrabold tracking-tight">{it.icon} {it.title}</h3>
+              {it.body.map((para, i) => <p key={i} className="mt-4 text-lg">{para}</p>)}
             </Reveal>
-          ))}
-        </div>
+            <Reveal delay={0.08}>
+              {it.photos?.length ? (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {it.photos.map((ph, i) => (
+                    // An odd photo count lets the first one span the full width.
+                    <figure key={ph.src} className={`panel !p-3 ${i === 0 && it.photos!.length % 2 ? "sm:col-span-2" : ""}`}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={ph.src} alt={ph.alt} loading="lazy" className="w-full border-2 border-ink object-cover" />
+                      {ph.caption ? <figcaption className="mt-2 font-mono text-xs text-muted">{ph.caption}</figcaption> : null}
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div className="panel grid min-h-[220px] place-items-center text-center font-mono text-sm text-muted">[ photos incoming ]</div>
+              )}
+            </Reveal>
+          </div>
+        ))}
       </section>
     </div>
   );

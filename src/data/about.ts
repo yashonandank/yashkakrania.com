@@ -1,92 +1,80 @@
 // About-page data. Keeping it as data (not hard-coded JSX) means the page just renders whatever is here.
+export type Kind = "work" | "projects" | "school";
 export type Entry = {
   period: string;
   title: string;
   org: string;
-  kind: "work" | "built" | "led" | "school";
+  kind: Kind;
   blurb: string;
   link?: string;
 };
 
+// Timeline filter chips, in order. The first one is selected by default.
+export const kinds: { kind: Kind; label: string }[] = [
+  { kind: "work", label: "work" },
+  { kind: "projects", label: "past projects" },
+  { kind: "school", label: "education" },
+];
+
 export const intro =
-  "By day I'm a technology risk analyst at EY in Atlanta, which means my job is asking \"what could go wrong?\" By night I flip it around: \"what happens if I poke this AI model?\" Business-school grad, no CS degree, learning mostly by breaking things.";
+  "AI enthusiast with a business background. I try to learn one new thing every day, then immediately experiment with it to see if I actually understood it (verdict: sometimes). This site is where those experiments end up.";
 
 export const timeline: Entry[] = [
+  // ---------- work ----------
   {
     period: "2026 – now",
     title: "Technology Risk Analyst",
     org: "EY · Atlanta",
     kind: "work",
-    blurb: "Professional worrier. I look at how big companies run their IT systems and figure out what could go sideways before it does. Turns out \"what could go wrong?\" is a full-time job.",
-  },
-  {
-    period: "2026 – now",
-    title: "Board Member",
-    org: "B Local Georgia",
-    kind: "led",
-    blurb: "Helping grow Georgia's community of businesses trying to do right by people and the planet. Easily the most grown-up thing on this list.",
+    blurb: "Professional worrier. I look at how big companies run their IT systems and figure out what could go sideways before it does. Turns out \"what could go wrong?\" is a full-time job, and a surprisingly useful lens for AI too.",
   },
   {
     period: "2024 – 2026",
     title: "Research Assistant, Goizueta AI Lab",
     org: "Emory University",
-    kind: "built",
-    blurb: "Built four GenAI apps for business classes, including a virtual TA and an autograder (students had opinions about the autograder). Also made AI Case Coach with Whisper, React and Supabase; 80+ people used it in its first week, which I'm still a little smug about.",
+    kind: "work",
+    blurb: "Built four GenAI apps for five business classes, including a virtual TA and an autograder (students had opinions about the autograder). Also made AI Case Coach with Whisper, React and Supabase; 80+ people used it in its first week, which I'm still a little smug about. And I designed a survey 1,200+ alumni and faculty took to shape a new tech-focused business degree.",
+  },
+  // ---------- past projects ----------
+  {
+    period: "2025 – 2026",
+    title: "Goizueta Learning Platform",
+    org: "AI-native learning management system",
+    kind: "projects",
+    blurb: "A learning platform built around AI from day one instead of bolted on later. The idea: every student gets a version of the class that adapts to them, with tools like a practice-quiz study buddy that figures out what you don't know yet and quizzes you on exactly that (rude, but effective).",
   },
   {
     period: "2025 – 2026",
-    title: "Founder & President",
-    org: "Goizueta AI Association",
-    kind: "led",
-    blurb: "Started an AI club and it got out of hand in the best way: 100+ members, 14 sessions on prompting and AI research, and an 8-week accelerator that took 60+ students from napkin idea to pitch. Also helped the school launch a new AI in Business major.",
+    title: "CaseSim",
+    org: "AI agent case interview platform",
+    kind: "projects",
+    blurb: "Case interviews are terrifying, and practice partners are never free at 11pm. CaseSim is an AI agent that runs a full case interview with you: it gives you the prompt, pushes back on your math and asks the annoying follow-ups. It got rolled out through the BBA Career Management Center, so real students now use it to prep.",
   },
-  {
-    period: "2024 – 2026",
-    title: "Captain, Case Competition Team",
-    org: "Goizueta Business School",
-    kind: "led",
-    blurb: "Took the team to the world's biggest case competition, in New Zealand, and came 3rd in the world (1st from the U.S.). Four cases, very little sleep, zero regrets.",
-  },
-  {
-    period: "2025 – 2026",
-    title: "Chief Research Officer",
-    org: "Emory Impact Investing Group",
-    kind: "led",
-    blurb: "Taught 111 students how to actually do research, ran the club's biggest symposium yet (160+ people), and set up teams to help vet deals for a $360k impact fund.",
-  },
-  {
-    period: "Summer 2025",
-    title: "Technology Risk Intern",
-    org: "EY · Atlanta",
-    kind: "work",
-    blurb: "Dug into the IT systems of two NYSE-listed companies and drew more flowcharts than I thought humanly possible. Liked it enough to come back full-time.",
-  },
-  {
-    period: "Summer 2024",
-    title: "GenAI Data Science Intern",
-    org: "EY · Kolkata",
-    kind: "built",
-    blurb: "Team of four, one chatbot: an inventory planner for a retailer with 6,000+ products. I simulated a lot of stores running out of a lot of things, then wrapped it in a Streamlit app so nobody needed training to use it.",
-  },
-  {
-    period: "Summer 2023",
-    title: "Go-to-Market Intern",
-    org: "Cut n' Stitch Kidswear",
-    kind: "work",
-    blurb: "A company that makes Marvel merch (yes, superheroes again). Set up an AI-powered CRM, built a portfolio site that helped bump sales 11%, and pitched bulk buyers at trade shows across India.",
-  },
+  // ---------- education ----------
   {
     period: "Class of 2026",
     title: "BBA, Goizueta Business School",
     org: "Emory University",
     kind: "school",
-    blurb: "Majored in Marketing, Management, Information Systems and Entrepreneurship, because picking one felt like commitment. Somehow ended up on Poets & Quants' 100 Best & Brightest list and with the Boisfeuillet Jones Medal for Leadership. TA'd five classes, including one on AWS.",
+    blurb: "Concentrated in Marketing, Management, Information Systems and Entrepreneurship, because picking one felt like commitment. The classes I nerded out on most were Machine Learning, Customer Lifetime Value and Monetization (basically: how do you predict what people will do, and what's it worth?), plus Strategy and Corporate Finance to keep me honest. TA'd five classes along the way, from Intro to Accounting to AWS. Somehow ended up on Poets & Quants' 100 Best & Brightest list and with the Boisfeuillet Jones Medal for Leadership.",
+  },
+  {
+    period: "2024 – 2026",
+    title: "Captain, Case Competition Team",
+    org: "Goizueta Business School",
+    kind: "school",
+    blurb: "Case comps are where I learned to think fast and make slides faster. Highlights: 3rd in the world (1st from the U.S.) at the world's biggest competition, in New Zealand; 1st place using AI to fix market research data for The Link Group; and semi-finals out of 300+ teams using ML to rethink credit lending for Capital One. Very little sleep, zero regrets.",
+  },
+  {
+    period: "2025 – 2026",
+    title: "Founder & President, Goizueta AI Association",
+    org: "Emory University",
+    kind: "school",
+    blurb: "Started an AI club and it got out of hand in the best way: 100+ members, 14 sessions on prompting and AI research, and an 8-week accelerator that took 60+ students from napkin idea to pitch. Also helped the school launch a brand-new AI in Business major, which is a fun thing to have a hand in.",
   },
 ];
 
-export const interests = ["Interpretability", "Agents", "Comics", "Coffee", "Video games", "VR"];
-
-// ---------- Off the clock ----------
+// ---------- Interests outside of AI ----------
 
 export const superman = {
   title: "Why Superman",
@@ -125,15 +113,34 @@ export const panels: Panel[] = [
   },
 ];
 
-export const hobbies = [
+// Everything else. Order here = order on the page. To add photos, drop them in public/interests/
+// and list them in `photos` (e.g. { src: "/interests/tennis-1.jpg", alt: "…", caption: "…" }).
+export type Photo = { src: string; alt: string; caption?: string };
+export type Interest = { id: string; icon: string; title: string; body: string[]; photos?: Photo[] };
+
+export const interests: Interest[] = [
   {
-    icon: "☕",
-    title: "Coffee",
-    body: "Fuel for everything on this site. Most experiments here start with one cup and end with a second cup and a bug.",
+    id: "tennis",
+    icon: "🎾",
+    title: "Tennis",
+    body: ["Writeup coming soon. For now: I play, I lose points I should win, I keep coming back."],
   },
   {
+    id: "gaming",
     icon: "🎮",
-    title: "Video games",
-    body: "Huge Horizon fan (Zero Dawn and Forbidden West). It's a robot-dinosaur world built on the ruins of an AI project gone very wrong, so it technically counts as research. Lately getting into VR, which mostly means walking into furniture.",
+    title: "Gaming",
+    body: ["Huge Horizon fan (Zero Dawn and Forbidden West). It's a robot-dinosaur world built on the ruins of an AI project gone very wrong, so it technically counts as research. Lately getting into VR, which mostly means walking into furniture."],
+  },
+  {
+    id: "coffee",
+    icon: "☕",
+    title: "Coffee",
+    body: ["Fuel for everything on this site. Most experiments here start with one cup and end with a second cup and a bug."],
+  },
+  {
+    id: "cinema",
+    icon: "🎬",
+    title: "Cinema",
+    body: ["Writeup coming soon. Popcorn opinions loading."],
   },
 ];
