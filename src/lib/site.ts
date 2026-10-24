@@ -1,16 +1,16 @@
 // One place for site-wide settings. Change a link here and it updates everywhere.
 export const site = {
   name: "Yash",
-  title: "Yash's AI playground",
+  title: "Yash Kakrania",
   description:
-    "No CS degree, lots of tabs open. I pick something in AI, poke at it until it makes sense (or breaks), and write down what happened.",
+    "Hands-on AI projects and write-ups: the question, what I built, what I found, and what I would do next.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === "production" ? "https://yashkakrania.com" : "http://localhost:3000"),
   location: "Atlanta",
   links: {
     github: "https://github.com/yashonandank",
     email: "mailto:yashonandank@gmail.com",
     linkedin: "https://www.linkedin.com/in/yashonandankakrania",
-    discord: "" as string, // empty = shows "coming soon" on the Community page
+    discord: "" as string, // empty = hidden on the Community page
     discussions: "https://github.com/yashonandank/yashkakrania.com/discussions",
   },
   // Contact links shown on the home page, About and the footer, in this order.
@@ -28,9 +28,8 @@ export const site = {
     categoryId: "TODO",
   },
   // Display names for project types. The keys stay as-is in content frontmatter.
-  projectTypes: { experiment: "poking at it", build: "made a thing", wildcard: "¯\\_(ツ)_/¯" } as Record<string, string>,
+  projectTypes: { experiment: "experiment", build: "build", wildcard: "exploration" } as Record<string, string>,
   nav: [
-    { href: "/about", label: "about" },
     { href: "/projects", label: "projects" },
     { href: "/log", label: "log" },
     { href: "/library", label: "library" },

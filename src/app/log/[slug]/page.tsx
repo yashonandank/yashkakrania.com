@@ -33,7 +33,7 @@ export default async function PostPage({ params }: PageProps<"/log/[slug]">) {
     <article className="wrap py-16">
       <div className="mx-auto max-w-[720px]">
         <div className="font-mono text-xs text-muted">
-          <Link href="/log" className="navlink">log</Link> / <Link href={`/projects/${project.slug}`} className="navlink">{project.slug}</Link> / week {String(post.week).padStart(2, "0")}
+          <Link href="/log" className="navlink">log</Link> / <Link href={`/projects/${project.slug}`} className="navlink">{project.slug}</Link>
         </div>
         <h1 className="h-display mt-4 text-[clamp(38px,7vw,68px)]">{post.title}</h1>
         <p className="mt-4 text-xl text-muted">{post.summary}</p>

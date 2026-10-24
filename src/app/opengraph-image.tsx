@@ -7,5 +7,5 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export default function Image() {
-  return ogImage({ kicker: `AI playground · ${site.location}`, title: "Poking at AI until it makes sense (or breaks).", footer: "no CS degree · lots of tabs open" });
+  return ogImage({ kicker: `Yash Kakrania · ${site.location}`, title: "Hands-on AI projects and write-ups.", footer: "yashkakrania.com" });
 }

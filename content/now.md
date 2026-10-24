@@ -1,9 +1,7 @@
 ---
-updated: 2026-09-30
-building: steering persuasion
-reading:
-  - Representation Engineering
-  - TransformerLens docs
+updated: 2026-10-23
+building: Writing up my first project
+reading: []
 ---
 
-Setting up a scraper for r/ChangeMyView and reading up on linear probes. Mostly reading. Some panicking.
+Finishing the write-up for my first project, which will be published on this site shortly.

@@ -2,7 +2,7 @@
 import { ogImage, ogSize } from "@/lib/og";
 import { getPost, getPosts } from "@/lib/content";
 
-export const alt = "Lab notebook entry";
+export const alt = "Project write-up";
 export const size = ogSize;
 export const contentType = "image/png";
 
@@ -12,5 +12,5 @@ export function generateStaticParams() {
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const post = getPost((await params).slug)!;
-  return ogImage({ kicker: `Week ${String(post.week).padStart(2, "0")} · lab notes`, title: post.title, footer: `${post.date} · ${post.readingMinutes} min read` });
+  return ogImage({ kicker: `Write-up · project ${String(post.week).padStart(2, "0")}`, title: post.title, footer: `${post.date} · ${post.readingMinutes} min read` });
 }

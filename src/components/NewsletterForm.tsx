@@ -9,8 +9,8 @@ export function NewsletterForm() {
   if (!site.buttondownUser) {
     return (
       <p className="font-mono text-sm text-muted">
-        Email signup coming soon (it&apos;s on the list, somewhere around item 40). Until then there&apos;s{" "}
-        <a href="/rss.xml" className="text-accent underline">RSS</a>, like it&apos;s 2005.
+        Email updates are coming soon. In the meantime, subscribe via{" "}
+        <a href="/rss.xml" className="text-accent underline">RSS</a>.
       </p>
     );
   }
@@ -23,7 +23,7 @@ export function NewsletterForm() {
     >
       <label htmlFor="bd-email" className="sr-only">Email</label>
       <input id="bd-email" type="email" name="email" required placeholder="you@domain.com" className="input flex-1" />
-      <button type="submit" className="btn">I&apos;m in →</button>
+      <button type="submit" className="btn">Subscribe →</button>
     </form>
   );
 }

@@ -7,8 +7,8 @@ export function Footer() {
     <footer className="mt-24 border-t-2 border-ink">
       <div className="wrap grid gap-10 py-14 md:grid-cols-2">
         <div>
-          <h2 className="text-4xl font-extrabold tracking-[-0.04em]">Get new posts when I remember to write them.</h2>
-          <p className="mt-2 text-muted">No spam. I can barely send one email a week.</p>
+          <h2 className="text-4xl font-extrabold tracking-[-0.04em]">Follow along.</h2>
+          <p className="mt-2 text-muted">New write-ups as each project is published.</p>
           <div className="mt-5"><NewsletterForm /></div>
         </div>
         <div className="grid grid-cols-2 gap-6 font-mono text-sm md:justify-self-end">
@@ -21,7 +21,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="wrap pb-8 font-mono text-xs text-muted">© {new Date().getFullYear()} Yash · built with Next.js, too much coffee and mild confusion</div>
+      <div className="wrap pb-8 font-mono text-xs text-muted">© {new Date().getFullYear()} Yash · built with Next.js</div>
     </footer>
   );
 }

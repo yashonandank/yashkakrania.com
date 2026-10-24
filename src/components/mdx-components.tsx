@@ -1,7 +1,7 @@
 "use client";
 /**
  * Components you can use inside any .mdx post, e.g.
- *   <Callout kind="broke">Δ replies are longer on average…</Callout>
+ *   <Callout kind="broke">The sample is too small to generalise…</Callout>
  *   <BarChart data={[0.51, 0.55, 0.62]} label="probe accuracy by layer" />
  *   <AttentionArcs text="I see your point, but…" />
  *   <GradioDemo src="https://yashonandank-steer.hf.space" />
@@ -10,7 +10,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
 export function Callout({ kind = "note", title, children }: { kind?: "note" | "broke" | "idea"; title?: string; children: ReactNode }) {
-  const label = title ?? { note: "Note", broke: "What broke", idea: "Idea" }[kind];
+  const label = title ?? { note: "Note", broke: "Limitation", idea: "Idea" }[kind];
   return (
     <div className="callout">
       <b>{label}</b>

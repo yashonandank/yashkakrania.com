@@ -9,12 +9,13 @@ const TYPES = ["all", "experiment", "build", "wildcard"] as const;
 export function ProjectFilter({ items }: { items: { type: string; node: ReactNode }[] }) {
   const [filter, setFilter] = useState<(typeof TYPES)[number]>("all");
   const shown = items.filter((i) => filter === "all" || i.type === filter);
+  if (!items.length) return null;
   return (
     <>
       <div className="mt-10 mb-6 flex flex-wrap gap-2" role="tablist">
         {TYPES.map((t) => (
           <button key={t} role="tab" aria-selected={filter === t} onClick={() => setFilter(t)}
-            className={`chip ${filter === t ? "!bg-accent !text-accent-ink" : ""}`}>{t === "all" ? "everything" : site.projectTypes[t]}</button>
+            className={`chip ${filter === t ? "!bg-accent !text-accent-ink" : ""}`}>{t === "all" ? "all" : site.projectTypes[t]}</button>
         ))}
       </div>
       <motion.div layout className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -26,7 +27,7 @@ export function ProjectFilter({ items }: { items: { type: string; node: ReactNod
           ))}
         </AnimatePresence>
       </motion.div>
-      {shown.length === 0 && <p className="font-mono text-sm text-muted">Nothing here yet. Check back next week (I say, optimistically).</p>}
+      {shown.length === 0 && <p className="font-mono text-sm text-muted">No projects of this type yet.</p>}
     </>
   );
 }

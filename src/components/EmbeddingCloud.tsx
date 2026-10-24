@@ -14,7 +14,7 @@
  */
 import { useEffect, useRef } from "react";
 
-export function EmbeddingCloud({ label = "v_persuasion" }: { label?: string }) {
+export function EmbeddingCloud({ label = "v_persona" }: { label?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

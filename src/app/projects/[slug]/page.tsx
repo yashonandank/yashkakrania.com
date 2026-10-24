@@ -1,5 +1,5 @@
 /**
- * One template renders every project: /projects/persuasion-directions, /projects/next-thing, …
+ * One template renders every project: /projects/<slug>, …
  * generateStaticParams tells Next.js which slugs exist so it pre-builds them all as static HTML.
  */
 import type { Metadata } from "next";
@@ -30,7 +30,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <div className="font-mono text-xs text-muted">projects / {project.slug}</div>
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="tag text-accent">{site.projectTypes[project.type]}</span>
-        <span className="tag">week {project.week}</span>
+        <span className="tag">project #{String(project.week).padStart(2, "0")}</span>
         <span className="tag">{project.status}</span>
       </div>
       <ViewTransition name={`project-title-${project.slug}`} share="morph" default="none">
@@ -39,15 +39,15 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <p className="mt-5 max-w-2xl text-xl text-muted">{project.summary}</p>
 
       <div className="mt-8 grid gap-4 border-y-2 border-ink py-5 md:grid-cols-[1fr_auto]">
-        <p><span className="kicker mr-2">So far</span>{project.keyFinding}</p>
+        <p><span className="kicker mr-2">Takeaway</span>{project.keyFinding}</p>
         {project.repo && <a href={project.repo} className="btn self-start">GitHub repo ↗</a>}
       </div>
 
       <div className="prose mt-8"><Mdx source={project.body} /></div>
 
-      <h2 className="h-display mt-16 text-4xl">Notes on this one</h2>
+      <h2 className="h-display mt-16 text-4xl">Write-ups</h2>
       <div className="mt-2">
-        {posts.length ? posts.map((p) => <PostRow key={p.slug} post={p} />) : <p className="mt-4 text-muted">First post coming soon. Probably.</p>}
+        {posts.length ? posts.map((p) => <PostRow key={p.slug} post={p} />) : <p className="mt-4 text-muted">Write-up coming soon.</p>}
       </div>
     </div>
   );

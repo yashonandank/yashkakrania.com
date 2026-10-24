@@ -25,11 +25,11 @@ export function ProjectCard({ p }: { p: Pick<Project, "slug" | "title" | "type" 
       onPointerLeave={(e) => { e.currentTarget.style.transform = ""; }}
     >
       <div>
-        <span className="tag">{site.projectTypes[p.type]} · w{String(p.week).padStart(2, "0")}</span>
+        <span className="tag">{site.projectTypes[p.type]} · #{String(p.week).padStart(2, "0")}</span>
         <ViewTransition name={`project-title-${p.slug}`} share="morph" default="none">
           <h3 className="mt-4 mb-2 text-2xl leading-tight font-bold tracking-[-0.02em]">{p.title}</h3>
         </ViewTransition>
-        <p className="text-sm leading-snug opacity-85"><b>So far:</b> {p.keyFinding}</p>
+        <p className="text-sm leading-snug opacity-85"><b>Takeaway:</b> {p.keyFinding}</p>
       </div>
       <div className="mt-4 font-mono text-xs opacity-70">{p.tags.join(" · ")}</div>
     </Link>
@@ -39,7 +39,7 @@ export function ProjectCard({ p }: { p: Pick<Project, "slug" | "title" | "type" 
 export function PostRow({ post }: { post: Pick<Post, "slug" | "title" | "date" | "week" | "summary" | "readingMinutes"> }) {
   return (
     <Link href={`/log/${post.slug}`} className="postrow group">
-      <span className="font-mono text-xs text-accent">W{String(post.week).padStart(2, "0")}</span>
+      <span className="font-mono text-xs text-accent">#{String(post.week).padStart(2, "0")}</span>
       <span>
         <span className="block text-xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-2 md:text-2xl">{post.title}</span>
         <span className="mt-1 block text-sm text-muted">{post.summary}</span>
